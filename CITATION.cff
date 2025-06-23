@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "EDP Advección–Difusión–Reacción Solver"
+version: "1.0.0"
+date-released: 2025-06-23
+authors:
+  - family-names: "Gutiérrez"
+    given-names: "Gabriela"

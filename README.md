@@ -1,4 +1,6 @@
 # EDP Advección–Difusión–Reacción Solver
+**Autor:** Gabriela Gutiérrez  
+**Fecha:** Junio 2025  
 
 ## Descripción
 
@@ -67,3 +69,6 @@ python src/adv_diff_reac.py
 - [Enunciado y etapas](docs/problema.md) – fórmula, BC, CI y desglose de tareas.
 - [Resultados FDM](docs/resultados_fdm.md) – animaciones y conclusiones de los distintos casos.
 
+
+
+- [AUTHORS](AUTHORS.md) – Lista de autores y contribuciones.
