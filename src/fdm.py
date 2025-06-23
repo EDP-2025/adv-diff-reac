@@ -99,7 +99,7 @@ def animate_fdm(U, X, Y, dt, filename="animacion_fdm.gif"):
 
     ani = animation.FuncAnimation(fig, anim, frames=range(0, U.shape[0], step),
                                   init_func=init, blit=False)
-    ani.save(filename, writer=PillowWriter(fps=20))
+    ani.save(filename, writer=PillowWriter(fps=60))
     print(f"GIF saved as {filename}")
 
 # === Prueba rápida ===
