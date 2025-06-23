@@ -1,7 +1,5 @@
 # EDP Advección–Difusión–Reacción Solver
 
-![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue) ![License](https://img.shields.io/badge/License-MIT-green)
-
 ## Descripción
 
 Este repositorio implementa un solver numérico para la ecuación de advección–difusión–reacción en un dominio rectangular 2D.
