@@ -80,27 +80,45 @@ def solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor):
     return U, X, Y, dt
 
 # === Función para animar y guardar GIF ===
-def animate_fdm(U, X, Y, dt, filename="animacion_fdm.gif"):
-    U0max = U.max(); U0min = U.min()
+# En src/fdm.py, reemplaza animate_fdm por esto:
+
+def animate_fdm(U, X, Y, dt, filename="animacion_fdm.gif",
+                skip=10, fps=20):
+    """
+    Crea un GIF submuestreando la solución cada `skip` pasos y
+    reproduciéndolo a `fps` cuadros por segundo.
+    """
+    U0max = U.max()
+    U0min = U.min()
     fig, ax = plt.subplots()
-    step = max(1, X.shape[0]//16)
+    
+    # Aquí tomamos solo cada `skip`-ésimo fotograma
+    frames = range(0, U.shape[0], skip)
+    
     def init():
         ax.clear()
         cf = ax.contourf(X, Y, U[0], 20, vmin=U0min, vmax=U0max)
         ax.set_title("t = 0")
         return []
-
+    
     def anim(i):
         ax.clear()
-        t = i*dt
-        cf = ax.contourf(X, Y, U[i], 20, vmin=U0min, vmax=U0max)
+        t = frames[i] * dt
+        cf = ax.contourf(X, Y, U[frames[i]], 20,
+                         vmin=U0min, vmax=U0max)
         ax.set_title(f"t = {t:.3f}")
         return []
-
-    ani = animation.FuncAnimation(fig, anim, frames=range(0, U.shape[0], step),
-                                  init_func=init, blit=False)
-    ani.save(filename, writer=PillowWriter(fps=60))
+    
+    ani = animation.FuncAnimation(
+        fig, anim,
+        frames=len(frames),
+        init_func=init,
+        blit=False
+    )
+    writer = PillowWriter(fps=fps)
+    ani.save(filename, writer=writer)
     print(f"GIF saved as {filename}")
+
 
 # === Prueba rápida ===
 if __name__ == "__main__":
