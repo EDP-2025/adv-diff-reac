@@ -64,3 +64,4 @@ python src/adv_diff_reac.py
 1. **FDM**: Implementación y resultados.
 2. **FEM**: Implementación con elementos de orden 1 y triangulación predefinida.
 
+- [Resultados FDM](docs/resultados_fdm.md) – animaciones y conclusiones de los distintos casos.
