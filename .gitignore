@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datos locales y entornos
+*.csv
+.env
