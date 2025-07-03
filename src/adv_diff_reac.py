@@ -3,8 +3,8 @@
 Script que corre tanto FDM como FEM y compara resultados.
 """
 
-from fdm import solve_fdm, animate_fdm
-from fem import solve_fem
+from fdm   import solve_fdm, animate_fdm
+from fem   import solve_fem, animate_fem  # ahora importamos animate_fem de fem
 
 def main():
     # Parámetros comunes
@@ -15,16 +15,28 @@ def main():
     theta     = 0.5
     dt_factor = 0.01
 
-    # FDM
-    U, X, Y, dt = solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor)
-    animate_fdm(U, X, Y, dt, filename="results/anim_fdm.gif")
+    # === FDM ===
+    U_fdm, X_fdm, Y_fdm, dt_fdm = solve_fdm(
+        nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor
+    )
+    # Asegúrate de que la carpeta results/ existe
+    animate_fdm(
+        U_fdm, X_fdm, Y_fdm, dt_fdm,
+        filename="results/anim_fdm.gif"
+    )
 
-    # FEM (aún no implementado)
-    try:
-        u_fem = solve_fem(nx, ny, Lx, Ly, Tfin, D, k)
-        # aquí podrías plotear u_fem...
-    except NotImplementedError as e:
-        print(e)
+    # === FEM ===
+    # solve_fem devuelve U, X, Y, mesh, dt
+    U_fem, X_fem, Y_fem, mesh, dt_fem = solve_fem(
+        nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor=dt_factor
+    )
+    animate_fem(
+        U_fem, X_fem, Y_fem, mesh, dt_fem,
+        Tfin, Lx, Ly,
+        filename="results/anim_fem.gif"
+    )
+
+    # Aquí podrías comparar U_fdm vs U_fem, calcular errores, etc.
 
 if __name__ == "__main__":
     main()
