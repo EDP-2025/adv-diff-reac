@@ -2,3 +2,5 @@ numpy
 scipy
 matplotlib
 jupyter
+scikit-fem
+#scikit-fem[full] 

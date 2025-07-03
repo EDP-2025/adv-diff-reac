@@ -1,10 +1,149 @@
 # src/fem.py
-"""
-Aquí irán tus funciones de Elementos Finitos
-"""
+#!/usr/bin/env python3
+import os
+import numpy as np
+import matplotlib.pyplot as plt
 
-def solve_fem(*args, **kwargs):
+from skfem import MeshTri, ElementTriP1, Basis, asm
+from skfem.assembly import BilinearForm, LinearForm
+from skfem.helpers import grad, dot
+from scipy.sparse.linalg import spsolve
+from matplotlib.animation import FuncAnimation, PillowWriter
+
+# === FUNCIONES PRINCIPALES DE FEM ===
+def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
     """
-    TODO: Implementar FEM para advección–difusión–reacción.
+    Corre FEM P1 para la EDP de advección–difusión–reacción
+    en Ω=[0,Lx]×[0,Ly], con Dirichlet homogéneo,
+    tiempo discretizado con θ–method.
+    Devuelve U[timestep, dof], coordenadas X, Y, el mesh de SKFE, y dt.
     """
-    raise NotImplementedError("solve_fem aún no implementado")
+    # Parámetros de mallado y tiempo
+    nt = int(np.ceil(Tfin / dt))
+    x = np.linspace(0.0, Lx, nx)
+    y = np.linspace(0.0, Ly, ny)
+    mesh = MeshTri.init_tensor(x, y)
+    element = ElementTriP1()
+    basis = Basis(mesh, element)
+
+    # Formas bilineales espaciales
+    @BilinearForm
+    def masa(u, v, w):
+        return u * v
+
+    @BilinearForm
+    def rigidez(u, v, w):
+        return dot(grad(u), grad(v))
+
+    @BilinearForm
+    def reaccion(u, v, w):
+        return k * u * v
+
+    # Ensamblaje de matrices constantes
+    M = asm(masa, basis)
+    K = D * asm(rigidez, basis)
+    R = asm(reaccion, basis)
+
+    # Funciones dependientes de t
+    def ensamblar_adveccion(t):
+        @BilinearForm
+        def adveccion(u, v, w):
+            xq, yq = w.x
+            Vx = 1.0 + 0.5 * np.sin(2*np.pi * t/Tfin) * xq
+            Vy = 0.5 + 0.25 * np.cos(2*np.pi * t/Tfin) * yq
+            return (Vx * grad(u)[0] + Vy * grad(u)[1]) * v
+        return asm(adveccion, basis)
+
+    def ensamblar_carga(t):
+        @LinearForm
+        def carga(v, w):
+            xq, yq = w.x
+            return (1 + t) * np.sin(np.pi * xq) * np.sin(np.pi * yq) * v
+        return asm(carga, basis)
+
+    # Condiciones de contorno e inicial
+    N = M.shape[0]
+    X, Y = mesh.p
+    dofs_bdy = np.where((X == 0.0) | (X == Lx) | (Y == 0.0) | (Y == Ly))[0]
+    all_dofs = np.arange(N)
+    dofs_free = np.setdiff1d(all_dofs, dofs_bdy)
+
+    def cond_inic_xy(x, y):
+        return np.exp(-50 * ((x - Lx/2)**2 + (y - Ly/2)**2))
+
+    u = cond_inic_xy(X, Y)
+    u[dofs_bdy] = 0.0
+
+    # Almacenar solución
+    U = np.zeros((nt+1, N))
+    U[0] = u.copy()
+
+    # Bucle temporal θ–method
+    for n in range(nt):
+        t_n = n * dt
+        t_np1 = (n+1) * dt
+
+        A_n = ensamblar_adveccion(t_n)
+        A_np1 = ensamblar_adveccion(t_np1)
+        C_n = A_n + R
+        C_np1 = A_np1 + R
+
+        F_n = ensamblar_carga(t_n)
+        F_np1 = ensamblar_carga(t_np1)
+
+        lhs = M + theta * dt * (K + C_np1)
+        rhs = M - (1 - theta) * dt * (K + C_n)
+
+        # Restringir a nodos libres
+        lhs_f = lhs[dofs_free][:, dofs_free]
+        b = rhs.dot(u) + dt * ((1-theta) * F_n + theta * F_np1)
+        b_free = b[dofs_free]
+
+        # Resolver y reconstruir
+        u_free = spsolve(lhs_f, b_free)
+        u = np.zeros(N)
+        u[dofs_free] = u_free
+        U[n+1] = u.copy()
+
+    return U, X, Y, mesh, dt
+
+
+def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
+                filename="results/anim_fem.gif", skip=1, fps=10):
+    """
+    Crea un GIF de la solución FEM submuestreando cada `skip` pasos.
+    """
+    vmin, vmax = U.min(), U.max()
+    frames = list(range(0, U.shape[0], skip))
+
+    fig, ax = plt.subplots(figsize=(5,4))
+    ax.set_aspect('equal')
+
+    def update(i):
+        ax.clear()
+        t = frames[i] * dt
+        ax.tricontourf(
+            X, Y, mesh.t.T, U[frames[i]],
+            levels=20, vmin=vmin, vmax=vmax
+        )
+        Vx = 1.0 + 0.5 * np.sin(2*np.pi * t/Tfin) * X
+        Vy = 0.5 + 0.25 * np.cos(2*np.pi * t/Tfin) * Y
+        ax.quiver(X, Y, Vx, Vy, color="white", scale=15, width=0.002)
+        ax.set_title(f"t = {t:.3f}")
+        ax.set_xticks([0, Lx/2, Lx])
+        ax.set_yticks([0, Ly/2, Ly])
+        return []
+
+    ani = FuncAnimation(fig, update, frames=len(frames), blit=False)
+    writer = PillowWriter(fps=fps)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    ani.save(filename, writer=writer)
+    print(f"GIF guardado en: {filename}")
+
+if __name__ == "__main__":
+    # Ejecución de prueba
+    params = dict(nx=16, ny=16, Lx=1.0, Ly=1.0,
+                  Tfin=0.1, D=0.5, k=0.5)
+    U, X, Y, mesh, dt = solve_fem(**params)
+    animate_fem(U, X, Y, mesh, dt,
+                params['Tfin'], params['Lx'], params['Ly'])
