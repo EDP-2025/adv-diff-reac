@@ -28,7 +28,7 @@ def main():
     # === FEM ===
     # solve_fem devuelve U, X, Y, mesh, dt
     U_fem, X_fem, Y_fem, mesh, dt_fem = solve_fem(
-        nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor=dt_factor
+        nx, ny, Lx, Ly, Tfin, D, k, theta, dt=dt_factor
     )
     animate_fem(
         U_fem, X_fem, Y_fem, mesh, dt_fem,
