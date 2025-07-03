@@ -10,6 +10,11 @@ from skfem.helpers import grad, dot
 from scipy.sparse.linalg import spsolve
 from matplotlib.animation import FuncAnimation, PillowWriter
 
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+RESULTS_DIR = os.path.join(BASE, 'results')
+os.makedirs(RESULTS_DIR, exist_ok=True)
+
+
 # === FUNCIONES PRINCIPALES DE FEM ===
 def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
     """
@@ -136,9 +141,10 @@ def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
 
     ani = FuncAnimation(fig, update, frames=len(frames), blit=False)
     writer = PillowWriter(fps=fps)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-    ani.save(filename, writer=writer)
-    print(f"GIF guardado en: {filename}")
+    fullpath = os.path.join(RESULTS_DIR, filename)
+    ani.save(fullpath, writer=writer)
+    print(f"GIF guardado en: {fullpath}")
+    
 
 if __name__ == "__main__":
     # Ejecución de prueba

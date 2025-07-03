@@ -5,6 +5,11 @@ import scipy.sparse.linalg as spla
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.animation import PillowWriter
+import os
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+RESULTS_DIR = os.path.join(BASE, 'results')
+os.makedirs(RESULTS_DIR, exist_ok=True)
+
 
 # === Helper functions ===
 def fuente(t, X, Y):
@@ -116,8 +121,11 @@ def animate_fdm(U, X, Y, dt, filename="animacion_fdm.gif",
         blit=False
     )
     writer = PillowWriter(fps=fps)
-    ani.save(filename, writer=writer)
-    print(f"GIF saved as {filename}")
+
+    fullpath = os.path.join(RESULTS_DIR, filename)
+    ani.save(fullpath, writer=writer)
+    print(f"GIF guardado en: {fullpath}")
+
 
 
 # === Prueba rápida ===

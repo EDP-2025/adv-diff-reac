@@ -22,7 +22,7 @@ def main():
     # Asegúrate de que la carpeta results/ existe
     animate_fdm(
         U_fdm, X_fdm, Y_fdm, dt_fdm,
-        filename="results/anim_fdm.gif"
+        filename="anim_fdm.gif"
     )
 
     # === FEM ===
@@ -33,7 +33,7 @@ def main():
     animate_fem(
         U_fem, X_fem, Y_fem, mesh, dt_fem,
         Tfin, Lx, Ly,
-        filename="results/anim_fem.gif"
+        filename="anim_fem.gif"
     )
 
     # Aquí podrías comparar U_fdm vs U_fem, calcular errores, etc.
