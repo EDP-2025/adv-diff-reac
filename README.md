@@ -59,7 +59,7 @@ python src/adv_diff_reac.py
 ```
 
 * Genera la animación FDM en `results/anim_fdm.gif`.
-* Placeholder FEM imprime “solve\_fem aún no implementado”.
+* Genera la animación FEM en `results/anim_fem.gif`.
 
 ## Etapas del trabajo
 
