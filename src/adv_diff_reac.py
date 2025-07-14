@@ -20,7 +20,7 @@ def main():
     )
     # Asegurarse de que la carpeta results/ existe
     animate_fdm(
-        U_fdm, X_fdm, Y_fdm, dt_fdm,
+        U_fdm, X_fdm, Y_fdm, dt_fdm, Tfin, 
         filename="anim_fdm.gif"
     )
 
