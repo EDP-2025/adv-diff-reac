@@ -75,7 +75,7 @@ Con la fuente no homogénea, la solución crece en las zonas de inyección (\(\s
 - k = 0.5  
 - f = 0  
 - Vx = 1.0 (constante)  
-- Vy = 0.01 (constante)  
+- Vy = 0.5 (constante)  
 
 ![Animación 5: Campo constante](../results/animacion5_fdm.gif)
 

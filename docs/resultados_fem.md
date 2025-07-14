@@ -78,7 +78,7 @@ Con la fuente no homogénea, la fuente introduce energía en el centro del domin
 - k = 0.5  
 - f = 0  
 - Vx = 1.0 (constante)  
-- Vy = 0.01 (constante)  
+- Vy = 0.5 (constante)  
 
 ![Animación 5: Campo constante](../results/animacion5_fem.gif)
 
