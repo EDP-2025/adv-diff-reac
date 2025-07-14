@@ -69,6 +69,9 @@ python src/adv_diff_reac.py
 - [Enunciado y etapas](docs/problema.md) – fórmula, BC, CI y desglose de tareas.
 - [Resultados FDM](docs/resultados_fdm.md) – animaciones y conclusiones de los distintos casos.
 
+## Referencias
+
+Consulta todas las referencias en [docs/referencias.md](docs/referencias.md).
 
 
 - [AUTHORS](AUTHORS.md) – Lista de autores y contribuciones.
