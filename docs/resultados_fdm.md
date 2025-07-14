@@ -2,9 +2,9 @@
 
 **Condición inicial**  
 Para todos los casos la condición inicial es el pulso gaussiano  
-\begin{equation}
+\[
 u(x,y,0) = \exp\bigl(-50\,((x-0.5)^2 + (y-0.5)^2)\bigr)
-\end{equation}
+\]  
 discretizado con diferencias finitas P1 y evolucionado con el método $\theta$ ($\theta=0.5$, Crank–Nicolson).
 
 ---
