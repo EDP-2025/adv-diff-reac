@@ -124,7 +124,7 @@ def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
             levels=20, vmin=vmin, vmax=vmax
         )
         # Vx = np.ones_like(X) * 1.0
-        # Vy = np.ones_like(Y) * 0.1
+        # Vy = np.ones_like(Y) * 0.5
         Vx = 1.0 + 0.5 * np.sin(2*np.pi * t/Tfin) * X
         Vy = 0.5 + 0.25 * np.cos(2*np.pi * t/Tfin) * Y
         ax.quiver(X, Y, Vx, Vy, color="white", scale=15, width=0.002)
