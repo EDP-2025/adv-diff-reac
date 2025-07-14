@@ -25,7 +25,7 @@ donde $D,\kappa\in\mathbb{R}$ y $\mathbf{V},f,c_0$ son funciones dadas.
 
 El trabajo se divide en dos etapas:  
 1. Implementar un método apropiado de **Diferencias Finitas** y presentar resultados.  
-2. Implementar el método de **Elementos Finitos**, con polinomios de orden $1$ con la triangulaci ́on que aparece en la siguiente figura:
+2. Implementar el método de **Elementos Finitos**, con polinomios de orden $1$ con la triangulación que aparece en la siguiente figura:
 ![Triangulación en elementos lineales](../results/Malla.png)
 
 
