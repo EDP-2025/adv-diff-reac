@@ -11,4 +11,5 @@ __pycache__/
 *.csv
 .env
 
-results/*.gif
+*.gif
+!results/*.gif
