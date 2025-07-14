@@ -15,14 +15,8 @@ RESULTS_DIR = os.path.join(BASE, 'results')
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 
-# === FUNCIONES PRINCIPALES DE FEM ===
+# FUNCIONES PRINCIPALES DE FEM
 def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
-    """
-    Corre FEM P1 para la EDP de advección–difusión–reacción
-    en Ω=[0,Lx]×[0,Ly], con Dirichlet homogéneo,
-    tiempo discretizado con θ–method.
-    Devuelve U[timestep, dof], coordenadas X, Y, el mesh de SKFE, y dt.
-    """
     # Parámetros de mallado y tiempo
     nt = int(np.ceil(Tfin / dt))
     x = np.linspace(0.0, Lx, nx)
@@ -54,17 +48,18 @@ def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
         @BilinearForm
         def adveccion(u, v, w):
             xq, yq = w.x
-            Vx = 1.0 + 0.5 * np.sin(2*np.pi * t/Tfin) * xq
-            Vy = 0.5 + 0.25 * np.cos(2*np.pi * t/Tfin) * yq
+            Vx = 1.0 
+            Vy = 0.5 
             return (Vx * grad(u)[0] + Vy * grad(u)[1]) * v
         return asm(adveccion, basis)
 
-    def ensamblar_carga(t):
+    def ensamblar_fuente(t):
         @LinearForm
-        def carga(v, w):
+        def fuente(v, w):
             xq, yq = w.x
             return (1 + t) * np.sin(np.pi * xq) * np.sin(np.pi * yq) * v
-        return asm(carga, basis)
+            # return 0 * v
+        return asm(fuente, basis)
 
     # Condiciones de contorno e inicial
     N = M.shape[0]
@@ -83,7 +78,7 @@ def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
     U = np.zeros((nt+1, N))
     U[0] = u.copy()
 
-    # Bucle temporal θ–method
+    # Bucle temporal método theta
     for n in range(nt):
         t_n = n * dt
         t_np1 = (n+1) * dt
@@ -93,8 +88,8 @@ def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
         C_n = A_n + R
         C_np1 = A_np1 + R
 
-        F_n = ensamblar_carga(t_n)
-        F_np1 = ensamblar_carga(t_np1)
+        F_n = ensamblar_fuente(t_n)
+        F_np1 = ensamblar_fuente(t_np1)
 
         lhs = M + theta * dt * (K + C_np1)
         rhs = M - (1 - theta) * dt * (K + C_n)
@@ -114,10 +109,7 @@ def solve_fem(nx, ny, Lx, Ly, Tfin, D, k, theta=0.5, dt=0.01):
 
 
 def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
-                filename="results/anim_fem.gif", skip=1, fps=10):
-    """
-    Crea un GIF de la solución FEM submuestreando cada `skip` pasos.
-    """
+                filename="animacion_fem.gif", skip=1, fps=5):
     vmin, vmax = U.min(), U.max()
     frames = list(range(0, U.shape[0], skip))
 
@@ -146,10 +138,17 @@ def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
     print(f"GIF guardado en: {fullpath}")
     
 
+
 if __name__ == "__main__":
     # Ejecución de prueba
     params = dict(nx=16, ny=16, Lx=1.0, Ly=1.0,
-                  Tfin=0.1, D=0.5, k=0.5)
+                  Tfin=1, D=0.5, k=0.5, theta = 0.5, dt = 0.001)
     U, X, Y, mesh, dt = solve_fem(**params)
+    skip = 1
+    fps  = 5
     animate_fem(U, X, Y, mesh, dt,
-                params['Tfin'], params['Lx'], params['Ly'])
+                params['Tfin'], params['Lx'], params['Ly'],
+                filename="animacion5_fem.gif",
+                skip=skip,
+                fps=fps
+                )

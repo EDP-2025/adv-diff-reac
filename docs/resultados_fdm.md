@@ -10,7 +10,7 @@ En esta sección se muestran cinco casos de prueba, variando los parámetros de 
 - D = 0  
 - k = 0.5  
 - f = 0  
-- Vx = 10·(1 + 0.5·sin(2πt/Tfin)·X)  
+- Vx = 1.0 + 0.5·sin(2πt/Tfin)·X
 - Vy = 0.5 + 0.25·cos(2πt/Tfin)·Y  
 
 ![Animación 1: Sin difusión](../results/animacion1.gif)
@@ -39,14 +39,14 @@ Con D = 0.5 la onda se va aplanando: los bordes se redondean y el pico baja más
 
 **Parámetros**  
 - D = 0.5  
-- k = 1000  
+- k = 100
 - f = 0  
 - mismo campo variable de velocidad  
 
 ![Animación 3: Reacción fuerte](../results/animacion3.gif)
 
 **Conclusión**  
-Con k = 1000 la onda desaparece casi de inmediato: la amplitud cae drásticamente y no alcanza a desplazarse.
+Con k = 100 la onda desaparece casi de inmediato: la amplitud cae drásticamente y no alcanza a desplazarse.
 
 ---
 
