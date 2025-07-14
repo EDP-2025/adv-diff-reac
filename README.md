@@ -13,12 +13,12 @@ Este repositorio implementa un solver numérico para la ecuación de advección�
 A[c](t,x,y) = \mathbf{V}(t,x,y)\cdot\nabla c - D\Delta c + \kappa c
 ```
 
-con \$(t,x,y)\in [0,T]\times [0,Lx]\times [0,Ly]\$.
+con \$(t,x,y)\in [0,T]\times [0,L_{x}]\times [0,L_{y}]\$.
 
 Con condiciones de contorno Dirichlet homogéneas:
 
 ```math
-c(t,x,y) = 0 \quad (t, x, y) \in \partial([0,L_x]\times[0,L_y]), \forall t\in[0,T]
+c(t,x,y) = 0 \quad (t, x, y) \in \partial([0,L_{x}]\times[0,L_{y}]), \forall t\in[0,T]
 ```
 
 Condición inicial:
