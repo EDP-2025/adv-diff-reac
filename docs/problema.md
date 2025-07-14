@@ -8,10 +8,19 @@ advección–difusión–reacción en un dominio rectangular 2D:
 \quad
 A[c] = \mathbf{V}(t,x,y)\cdot\nabla c - D\Delta c + \kappa\,c
 ```
-con  
+
+con \$(t,x,y)\in [0,T]\times [0,Lx]\times [0,Ly]\$.
+
+Con condiciones de contorno Dirichlet homogéneas:
+
 ```math
-c=0\quad\text{en } \partial([0,L_x]\times[0,L_y]),\quad
-c(0,x,y)=c_0(x,y),
+c(t,x,y) = 0 \quad (t, x, y) \in \partial([0,L_x]\times[0,L_y]), \forall t\in[0,T]
+```
+
+Condición inicial:
+
+```math
+c(0,x,y) = c_0(x,y)
 ```
 donde $D,\kappa\in\mathbb{R}$ y $\mathbf{V},f,c_0$ son funciones dadas.  
 

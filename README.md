@@ -13,10 +13,12 @@ Este repositorio implementa un solver numérico para la ecuación de advección�
 A[c](t,x,y) = \mathbf{V}(t,x,y)\cdot\nabla c - D\Delta c + \kappa c
 ```
 
+con \$(t,x,y)\in [0,T]\times [0,Lx]\times [0,Ly]\$.
+
 Con condiciones de contorno Dirichlet homogéneas:
 
 ```math
-c(t,x,y) = 0 \quad \text{en } \partial([0,L_x]\times[0,L_y]), \forall t\in[0,T]
+c(t,x,y) = 0 \quad (t, x, y) \in \partial([0,L_x]\times[0,L_y]), \forall t\in[0,T]
 ```
 
 Condición inicial:
@@ -67,7 +69,9 @@ python src/adv_diff_reac.py
 2. **FEM**: Implementación con elementos de orden 1 y triangulación predefinida.
 
 - [Enunciado y etapas](docs/problema.md) – fórmula, BC, CI y desglose de tareas.
-- [Resultados FDM](docs/resultados_fdm.md) – animaciones y conclusiones de los distintos casos.
+- [Resultados FDM](docs/resultados_fdm.md) – animaciones y conclusiones de los distintos casos haciendo uso del método de diferencias finitas.
+- [Resultados FEM](docs/resultados_fem.md) – animaciones y conclusiones de los distintos casos haciendo uso del método de elementos finitos.
+
 
 ## Referencias
 
