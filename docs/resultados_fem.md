@@ -2,9 +2,9 @@
 
 **Condición inicial**  
 Para todos los casos la condición inicial es el pulso gaussiano
-
-    u(x,y,0) = exp(-50·((x−0.5)² + (y−0.5)²))
-
+```math
+    u(x,y,0) = exp(-50·((x−0.5)^{2} + (y−0.5)^{2}))
+```
 discretizado con elementos finitos P1 sobre malla triangular y tiempo integrado con θ-method (θ = 0.5, Crank–Nicolson).
 
 ---

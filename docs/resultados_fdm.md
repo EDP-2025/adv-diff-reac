@@ -5,7 +5,7 @@ Para todos los casos la condición inicial es el pulso gaussiano
 ```math
     u(x,y,0) = exp(-50·((x−0.5)^{2} + (y−0.5)^{2}))
 ```
-discretizado con diferencias finitas P1 y evolucionado con el θ–method (θ=0.5, Crank–Nicolson).
+discretizado con diferencias finitas y evolucionado con el θ–method (θ=0.5, Crank–Nicolson).
 
 ---
 
