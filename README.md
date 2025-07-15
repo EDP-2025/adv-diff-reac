@@ -1,5 +1,5 @@
 # EDP Advección–Difusión–Reacción Solver
-**Autor:** Gabriela Gutiérrez  
+**Autora:** Gabriela Gutiérrez  
 **Fecha:** Junio 2025  
 
 ## Descripción
