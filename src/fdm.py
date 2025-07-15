@@ -26,12 +26,12 @@ def aplicar_bc(u, nx, ny):
     return uma.ravel()
 
 def Vx_func(t, X, Y, Tfin):
-    # return 1.0 + 0.5 * np.sin(2 * np.pi * t / Tfin) * X
-    return np.ones_like(X) * 1
+    return 1.0 + 0.5 * np.sin(2 * np.pi * t / Tfin) * X
+    # return np.ones_like(X) * 1
 
 def Vy_func(t, X, Y, Tfin):
-    # return 0.5 + 0.25 * np.cos(2 * np.pi * t / Tfin) * Y
-    return np.ones_like(Y) * 0.5
+    return 0.5 + 0.25 * np.cos(2 * np.pi * t / Tfin) * Y
+    # return np.ones_like(Y) * 0.5
 
 
 # Ensamblaje de A
@@ -120,6 +120,11 @@ def animate_fdm(U, X, Y, dt, Tfin, filename="animacion5_fdm.gif", skip=10, fps=2
 if __name__ == "__main__":
     nx, ny, Lx, Ly = 16, 16, 1.0, 1.0
     Tfin, D, k = 0.1, 0.5, 0.5
-    theta, dt_factor = 0.5, 0.01
+    theta, dt_factor = 0.5, 0.001
     U, X, Y, dt = solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor)
-    animate_fdm(U, X, Y, dt, Tfin)
+
+    animate_fdm(
+        U, X, Y,
+        dt, Tfin
+    )
+
