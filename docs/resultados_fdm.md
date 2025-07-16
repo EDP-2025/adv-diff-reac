@@ -22,6 +22,7 @@ c_0(x,y) \;=\; \exp\bigl(-50\bigl[(x-0.5)^2 + (y-0.5)^2\bigr]\bigr).
 La discretización combina diferencias finitas en el espacio con el **θ–method** en el tiempo (θ = 0.5, Crank–Nicolson).  
 
 A continuación se muestran los resultados para distintos parámetros considerados.
+
 ---
 
 ## Caso 1: Sin difusión  
