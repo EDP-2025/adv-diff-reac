@@ -1,4 +1,4 @@
-# Resultados del Método de Diferencias Finitas
+# Resultados del Método de Elementos Finitos
 
 En esta sección presentamos los resultados obtenidos al resolver numéricamente la ecuación de advección–difusión–reacción  
 ```math
