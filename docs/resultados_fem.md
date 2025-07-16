@@ -1,10 +1,24 @@
-# Resultados del Método de Elementos Finitos
+# Resultados del Método de Diferencias Finitas
 
-**Condición inicial**  
-Para todos los casos la condición inicial es el pulso gaussiano
+En esta sección presentamos los resultados obtenidos al resolver numéricamente la ecuación de advección–difusión–reacción  
 ```math
-    u(x,y,0) = exp(-50·((x−0.5)^{2} + (y−0.5)^{2}))
+\frac{\partial c}{\partial t} + \mathbf V(t,x,y)\cdot\nabla c \;-\; D\,\Delta c \;+\;\kappa\,c \;=\; f(t,x,y),
 ```
+en el dominio \$[0,T]\times[0,L_x]\times[0,L_y]\$, con condiciones de contorno de Dirichlet homogéneas  
+```math
+c(t,x,y) = 0
+\quad\forall\,(t,x,y)\in\partial\bigl([0,L_x]\times[0,L_y]\bigr),\;\forall\,t\in[0,T],
+```
+y condición inicial  
+```math
+c(0,x,y) \;=\; c_0(x,y).
+```
+
+Como condición inicial específica, hemos considerado un **pulso gaussiano** centrado en \((0.5,0.5)\):  
+```math
+c_0(x,y) \;=\; \exp\bigl(-50\bigl[(x-0.5)^2 + (y-0.5)^2\bigr]\bigr).
+```
+
 discretizado con elementos finitos P1 sobre malla triangular y tiempo integrado con θ-method (θ = 0.5, Crank–Nicolson).
 
 ---
