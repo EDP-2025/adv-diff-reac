@@ -150,7 +150,7 @@ if __name__ == "__main__":
     fps = 5
     animate_fem(U, X, Y, mesh, dt,
                 params['Tfin'], params['Lx'], params['Ly'],
-                filename="animacion_caso2_fem.gif",
+                filename="animacion_caso_prueba_fem.gif",
                 skip=skip,
                 fps=fps
                 )

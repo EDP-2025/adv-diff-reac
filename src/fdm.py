@@ -94,7 +94,7 @@ def solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor, fuente_func=fuente):
     return U, X, Y, dt
 
 # Animación con vectores
-def animate_fdm(U, X, Y, dt, Tfin, filename="animacion_caso5_fdm.gif", skip=10, fps=20):
+def animate_fdm(U, X, Y, dt, Tfin, filename="animacion_caso_prueba_fdm.gif", skip=10, fps=20):
     vmin, vmax = U.min(), U.max()
     frames = range(0, U.shape[0], skip)
     fig, ax = plt.subplots()
