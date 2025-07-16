@@ -144,13 +144,13 @@ def animate_fem(U, X, Y, mesh, dt, Tfin, Lx, Ly,
 if __name__ == "__main__":
     # Ejecución de prueba
     params = dict(nx=16, ny=16, Lx=1.0, Ly=1.0,
-                  Tfin=1, D=0.00, k=0.01, theta = 0.5, dt = 0.01)
+                  Tfin=0.5, D=0.05, k=0.01, theta = 0.5, dt = 0.01)
     U, X, Y, mesh, dt = solve_fem(**params)
     skip = 1
     fps = 5
     animate_fem(U, X, Y, mesh, dt,
                 params['Tfin'], params['Lx'], params['Ly'],
-                filename="animacion_casoprueba.gif",
+                filename="animacion_caso2_fem.gif",
                 skip=skip,
                 fps=fps
                 )
