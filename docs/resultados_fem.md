@@ -17,7 +17,7 @@ discretizado con elementos finitos P1 sobre malla triangular y tiempo integrado 
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 1: Sin difusión](../results/animacion1_fem.gif)
+![Animación 1: Sin difusión](../results/animacion_caso1_fem.gif)
 
 **Conclusión**  
 Con D=0, el esquema FEM transporta la gaussiana sin cambiar su forma ni anchura. Sólo pierde un poco de altura al tocar los bordes, por las condiciones de contorno.
@@ -33,7 +33,7 @@ Con D=0, el esquema FEM transporta la gaussiana sin cambiar su forma ni anchura.
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 2: Difusión moderada](../results/animacion2_fem.gif)
+![Animación 2: Difusión moderada](../results/animacion_caso2_fem.gif)
 
 **Conclusión**  
 
@@ -50,7 +50,7 @@ Con D=0.5 la difusión hace que la gaussiana se “extienda”: la cresta se apl
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 3: Reacción fuerte](../results/animacion3_fem.gif)
+![Animación 3: Reacción fuerte](../results/animacion_caso3_fem.gif)
 
 **Conclusión**  
 Al aumentar k a 100, el término de reacción “absorbe” la gaussiana casi de inmediato: la amplitud cae rápidamente y la curva desaparece casi por completo.
@@ -65,7 +65,7 @@ Al aumentar k a 100, el término de reacción “absorbe” la gaussiana casi de
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 4: Fuente activada](../results/animacion4_fem.gif)
+![Animación 4: Fuente activada](../results/animacion_caso4_fem.gif)
 
 **Conclusión**  
 Con la fuente no homogénea, la fuente introduce energía en el centro del dominio. Al principio la onda crece ahí, luego la difusión y la reacción equilibran la producción y se forma un perfil casi estable parecido a la función fuente.
@@ -80,7 +80,7 @@ Con la fuente no homogénea, la fuente introduce energía en el centro del domin
 - Vx = 1.0 (constante)  
 - Vy = 0.5 (constante)  
 
-![Animación 5: Campo constante](../results/animacion5_fem.gif)
+![Animación 5: Campo constante](../results/animacion_caso5_fem.gif)
 
 **Conclusión**  
 Con velocidades constantes la onda se desplaza de manera uniforme sin deformarse por variaciones del campo. La difusión sigue aplanando la cresta, pero el movimiento es lineal y predecible.
