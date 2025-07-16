@@ -36,18 +36,18 @@ En este proyecto implementamos y comparamos dos técnicas numéricas para resolv
 1. **Método de Diferencias Finitas (FDM)**  
 2. **Método de Elementos Finitos P1 (FEM)**  
 
-A partir de un **pulso gaussiano** inicial centrado en \((0.5,0.5)\), las animaciones en `results/` ilustran:
+A partir de un **pulso gaussiano** inicial centrado en \$(0.5,0.5)\$, las animaciones en `results/` ilustran:
 
-- **Transporte**: cómo el pulso viaja a lo largo del dominio arrastrado por el campo de velocidades \(\mathbf V(t,x,y)\).  
-- **Difusión**: ensanchamiento gradual de la campana según el coeficiente \(D\).  
-- **Reacción**: atenuación exponencial de la amplitud con el parámetro \(\kappa\).  
+- **Transporte**: cómo el pulso viaja a lo largo del dominio arrastrado por el campo de velocidades \$\mathbf V(t,x,y)\$.  
+- **Difusión**: ensanchamiento gradual de la campana según el coeficiente \$D\$.  
+- **Reacción**: atenuación exponencial de la amplitud con el parámetro \$k\$.  
 
 ---
 
 ### Ejemplos de salidas
 
 <p align="center">
-  <img src="results/animacion_caso2_fdm.gif" alt="Animación FDM" width="300"/>
+  <img src="results/animacion_caso2_fdm.gif" alt="Animación FDM" width="330"/>
   &nbsp;&nbsp;
   <img src="results/animacion_caso2_fem.gif" alt="Animación FEM" width="300"/>
 </p>
