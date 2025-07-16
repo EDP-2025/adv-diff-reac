@@ -29,6 +29,37 @@ c(0,x,y) = c_0(x,y)
 
 Parámetros dados: \$D\$, \$\kappa\$, funciones \$\mathbf{V}(t,x,y)\$, \$f(t,x,y)\$ y \$c\_0(x,y)\$.
 
+## Resumen de resultados
+
+En este proyecto implementamos y comparamos dos técnicas numéricas para resolver la ecuación de advección–difusión–reacción en 2D:
+
+1. **Método de Diferencias Finitas (FDM)**  
+2. **Método de Elementos Finitos P1 (FEM)**  
+
+A partir de un **pulso gaussiano** inicial centrado en \((0.5,0.5)\), las animaciones en `results/` ilustran:
+
+- **Transporte**: cómo el pulso viaja a lo largo del dominio arrastrado por el campo de velocidades \(\mathbf V(t,x,y)\).  
+- **Difusión**: ensanchamiento gradual de la campana según el coeficiente \(D\).  
+- **Reacción**: atenuación exponencial de la amplitud con el parámetro \(\kappa\).  
+
+---
+
+### Ejemplos de salidas
+
+<p align="center">
+  <img src="results/animacion_caso2_fdm.gif" alt="Animación FDM" width="300"/>
+  &nbsp;&nbsp;
+  <img src="results/animacion_caso2_fem.gif" alt="Animación FEM" width="300"/>
+</p>
+
+- **FDM** (`animacion_caso2_fdm.gif`):  
+    Se observa como la campana se ensancha por difusión, se desplaza arrastrada por el campo de velocidades y va perdiendo altura de forma suave por el término de reacción
+
+- **FEM** (`animacion_caso2_fem.gif`):  
+    Muestre el mismo experimento con elementos finitos P1. La onda inicial se difunde en el espacio, viaja según el flujo dinámico y se diluye gradualmente por la reacción.
+
+---
+
 ## Estructura del proyecto
 
 ```
