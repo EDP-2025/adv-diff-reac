@@ -47,7 +47,7 @@ A partir de un **pulso gaussiano** inicial centrado en \$(0.5,0.5)\$, las animac
 ### Ejemplos de salidas
 
 <p align="center">
-  <img src="results/animacion_caso2_fdm.gif" alt="Animación FDM" width="330"/>
+  <img src="results/animacion_caso2_fdm.gif" alt="Animación FDM" width="320"/>
   &nbsp;&nbsp;
   <img src="results/animacion_caso2_fem.gif" alt="Animación FEM" width="300"/>
 </p>
