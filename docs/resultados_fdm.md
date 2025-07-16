@@ -17,7 +17,7 @@ discretizado con diferencias finitas y evolucionado con el θ–method (θ=0.5, 
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 1: Sin difusión](../results/animacion1_fdm.gif)
+![Animación 1: Sin difusión](../results/animacion_caso1_fdm.gif)
 
 **Conclusión**  
 Al anular D, el término de difusión desaparece y la solución se transporta prácticamente sin cambio de forma: el pico de la gaussiana mantiene su altura mientras se desplaza, salvo pequeñas pérdidas en los bordes impuestas por las condiciones de contorno Dirichlet.
@@ -32,7 +32,7 @@ Al anular D, el término de difusión desaparece y la solución se transporta pr
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 2: Difusión moderada](../results/animacion2_fdm.gif)
+![Animación 2: Difusión moderada](../results/animacion_caso2_fdm.gif)
 
 **Conclusión**  
 Con D=0.5 la difusión suaviza rápidamente la curva: los gradientes se atenúan, la cresta se aplana y la anchura de la gaussiana aumenta, demostrando el papel disipativo del término Δu en el esquema de diferencias finitas.
@@ -47,7 +47,7 @@ Con D=0.5 la difusión suaviza rápidamente la curva: los gradientes se atenúan
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 3: Reacción fuerte](../results/animacion3_fdm.gif)
+![Animación 3: Reacción fuerte](../results/animacion_caso3_fdm.gif)
 
 **Conclusión**  
 Al aumentar k a 100, el término de reacción domina y provoca una aniquilación rápida de la onda: la amplitud decae casi instantáneamente, mostrando el carácter fuertemente disipativo de –k u en la EDP.
@@ -62,7 +62,7 @@ Al aumentar k a 100, el término de reacción domina y provoca una aniquilación
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
 
-![Animación 4: Fuente activada](../results/animacion4_fdm.gif)
+![Animación 4: Fuente activada](../results/animacion_caso4_fdm.gif)
 
 **Conclusión**  
 Con la fuente no homogénea, la solución crece en las zonas de inyección (\(\sinπx\sinπy\)) y luego alcanza un estado pseudo–estacionario donde producción y disipación (difusión+reacción) se equilibran, mostrando un perfil espacial similar al de la fuente.
@@ -77,7 +77,7 @@ Con la fuente no homogénea, la solución crece en las zonas de inyección (\(\s
 - Vx = 1.0 (constante)  
 - Vy = 0.5 (constante)  
 
-![Animación 5: Campo constante](../results/animacion5_fdm.gif)
+![Animación 5: Campo constante](../results/animacion_caso5_fdm.gif)
 
 **Conclusión**  
 Con velocidades constantes la onda se desplaza uniformemente hacia la derecha y arriba. La difusión D=0.5 sigue aplanando la cresta, pero al no haber variación temporal o espacial en Vx/Vy la traslación es lineal y más predecible.
