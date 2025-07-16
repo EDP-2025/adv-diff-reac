@@ -26,7 +26,7 @@ discretizado con elementos finitos P1 sobre malla triangular y tiempo integrado 
 ## Caso 1: Sin difusión  
 **Parámetros**  
 - D = 0  
-- k = 0.5  
+- k = 0.01
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -41,8 +41,8 @@ Con D=0, el esquema FEM transporta la gaussiana sin cambiar su forma ni anchura.
 
 ## Caso 2: Difusión moderada  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -58,8 +58,8 @@ Con D=0.5 la difusión hace que la gaussiana se “extienda”: la cresta se apl
 
 ## Caso 3: Reacción fuerte  
 **Parámetros**  
-- D = 0.5  
-- k = 100  
+- D = 0.05
+- k = 5
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -73,8 +73,8 @@ Al aumentar k a 100, el término de reacción “absorbe” la gaussiana casi de
 
 ## Caso 4: Fuente activada  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01 
 - f(t,x,y) = (1 + t) sin(πx) sin(πy)  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -88,8 +88,8 @@ Con la fuente no homogénea, la fuente introduce energía en el centro del domin
 
 ## Caso 5: Campo constante  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01 
 - f = 0  
 - Vx = 1.0 (constante)  
 - Vy = 0.5 (constante)  

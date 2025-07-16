@@ -27,7 +27,7 @@ La discretización combina diferencias finitas en el espacio con el **θ–metho
 ## Caso 1: Sin difusión  
 **Parámetros**  
 - D = 0  
-- k = 0.5  
+- k = 0.01
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -41,8 +41,8 @@ Al anular D, el término de difusión desaparece y la solución se transporta pr
 
 ## Caso 2: Difusión moderada  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -56,8 +56,8 @@ Con D=0.5 la difusión suaviza rápidamente la curva: los gradientes se atenúan
 
 ## Caso 3: Reacción fuerte  
 **Parámetros**  
-- D = 0.5  
-- k = 100  
+- D = 0.05
+- k = 5
 - f = 0  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -71,8 +71,8 @@ Al aumentar k a 100, el término de reacción domina y provoca una aniquilación
 
 ## Caso 4: Fuente activada  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01 
 - f(t,x,y) = (1 + t) sin(πx) sin(πy)  
 - Vx = 1.0 + 0.5 sin(2π t/Tfin) X  
 - Vy = 0.5 + 0.25 cos(2π t/Tfin) Y  
@@ -86,8 +86,8 @@ Con la fuente no homogénea, la solución crece en las zonas de inyección (\(\s
 
 ## Caso 5: Campo constante  
 **Parámetros**  
-- D = 0.5  
-- k = 0.5  
+- D = 0.05
+- k = 0.01 
 - f = 0  
 - Vx = 1.0 (constante)  
 - Vy = 0.5 (constante)  
