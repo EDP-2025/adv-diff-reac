@@ -1,4 +1,4 @@
-# EDP Advección–Difusión–Reacción Solver
+# Solver de la EDP de Advección–Difusión–Reacción 
 **Autora:** Gabriela Gutiérrez  
 **Fecha:** Junio 2025  
 
