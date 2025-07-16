@@ -14,8 +14,8 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Funciones auxiliares
 def fuente(t, X, Y):
-    return (1 + t) * np.sin(np.pi * X) * np.sin(np.pi * Y)
-    # return np.zeros_like(X)
+    # return (1 + t) * np.sin(np.pi * X) * np.sin(np.pi * Y)
+    return np.zeros_like(X)
 
 def cond_inic(X, Y):
     return np.exp(-50 * ((X - 0.5)**2 + (Y - 0.5)**2))
@@ -26,12 +26,12 @@ def aplicar_bc(u, nx, ny):
     return uma.ravel()
 
 def Vx_func(t, X, Y, Tfin):
-    return 1.0 + 0.5 * np.sin(2 * np.pi * t / Tfin) * X
-    # return np.ones_like(X) * 1
+    # return 1.0 + 0.5 * np.sin(2 * np.pi * t / Tfin) * X
+    return np.ones_like(X) * 1
 
 def Vy_func(t, X, Y, Tfin):
-    return 0.5 + 0.25 * np.cos(2 * np.pi * t / Tfin) * Y
-    # return np.ones_like(Y) * 0.5
+    # return 0.5 + 0.25 * np.cos(2 * np.pi * t / Tfin) * Y
+    return np.ones_like(Y) * 0.5
 
 
 # Ensamblaje de A
@@ -94,7 +94,7 @@ def solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor, fuente_func=fuente):
     return U, X, Y, dt
 
 # Animación con vectores
-def animate_fdm(U, X, Y, dt, Tfin, filename="animacion5_fdm.gif", skip=10, fps=20):
+def animate_fdm(U, X, Y, dt, Tfin, filename="animacion_caso5_fdm.gif", skip=10, fps=20):
     vmin, vmax = U.min(), U.max()
     frames = range(0, U.shape[0], skip)
     fig, ax = plt.subplots()
@@ -119,8 +119,8 @@ def animate_fdm(U, X, Y, dt, Tfin, filename="animacion5_fdm.gif", skip=10, fps=2
 # Prueba rápida
 if __name__ == "__main__":
     nx, ny, Lx, Ly = 16, 16, 1.0, 1.0
-    Tfin, D, k = 0.1, 0.5, 0.5
-    theta, dt_factor = 0.5, 0.001
+    Tfin, D, k = 1, 0.05, 0.01
+    theta, dt_factor = 0.5, 0.01
     U, X, Y, dt = solve_fdm(nx, ny, Lx, Ly, Tfin, D, k, theta, dt_factor)
 
     animate_fdm(
