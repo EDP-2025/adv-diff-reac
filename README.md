@@ -56,7 +56,7 @@ A partir de un **pulso gaussiano** inicial centrado en \$(0.5,0.5)\$, las animac
     Se observa como la campana se ensancha por difusión, se desplaza arrastrada por el campo de velocidades y va perdiendo altura de forma suave por el término de reacción
 
 - **FEM** (`animacion_caso2_fem.gif`):  
-    Muestre el mismo experimento con elementos finitos P1. La onda inicial se difunde en el espacio, viaja según el flujo dinámico y se diluye gradualmente por la reacción.
+    Muestra el mismo experimento con elementos finitos P1. La onda inicial se difunde en el espacio, viaja según el flujo dinámico y se diluye gradualmente por la reacción.
 
 ---
 
